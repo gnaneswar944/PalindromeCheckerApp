@@ -4,16 +4,16 @@ public class PalindromeCheckerApp{
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string:");
         String str = sc.nextLine().toUpperCase();
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack();
+        Deque<Character> deque = new LinkedList<>();
         for(char ch : str.toCharArray()){
-            queue.add(ch);
-            stack.push(ch);
+            deque.addLast(ch);
         }
         boolean palindrome = true;
-        while (!queue.isEmpty()){
-            if(queue.remove() != stack.pop()){
-                palindrome =false;
+        while (deque.size() > 1){
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
+            if(first != last){
+                palindrome = false;
                 break;
             }
         }
